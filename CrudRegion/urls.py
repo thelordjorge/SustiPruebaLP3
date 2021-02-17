@@ -24,5 +24,7 @@ urlpatterns = [
     path('create-region/',views.create_region, name = "create-region"),
     path('empleado/',views.empleado, name = "empleado"),
     path('create-empleado/',views.create_empleado, name = "create-empleado"),
+    path('save-region/',views.save_region, name="save_region"),
+    path('eliminar_region/<int:id>',views.eliminar_region, name="eliminar_region"),
 
 ]
