@@ -1,0 +1,64 @@
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+
+            {% endblock title %}
+            Examen Susti - Amasifuen
+        </title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+    </head>
+    <body>
+        <header>
+            <div id="logotipo">
+                
+                <h1>
+                    Menú Principal
+                </h1>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'inicio' %}">Inicio</a>
+                </li>
+                <li>
+                    <a href="{% url 'region' %}">Regiones</a>
+                </li>
+                <li>
+                    <a href="{% url 'create-region' %}">Crear Región</a>
+                </li>
+                <li>
+                    <a href="{% url 'empleado' %}">Empleados</a>
+                </li>
+                <li>
+                    <a href="{% url 'create-empleado' %}">Crear empleado</a>
+                </li>
+                
+            </ul>
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
+
+        </div>
+
+        <div id="content">
+            <div class="box">                
+                {% block content %}
+                    <strong> 
+                       Contenido por defecto desde layout.html  
+                    </strong>                    
+                {% endblock content %}
+            </div>
+        </div>
+        <footer>
+            UNTELS - Lenguaje de Programación III &copy; {% now "d/m/y h:m:s" %}
+        </footer>
+    </body>
+</html>
