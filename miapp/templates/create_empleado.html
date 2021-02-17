@@ -1,19 +1,23 @@
-<!-- COMENTARIO EN HTML...  -->
 {% extends 'layout.html' %}
 
+
 {% block title %}
-    {{titulo}}
-{% endblock title %}
-
+    Formulario en DJango
+{% endblock %}
 {% block content %}
-
-    <h1 class="title"> Página {{titulo}} </h1>
-    <p>Usando Templates con Django </p>
-    {% if mensaje %}
-        <p>Mensaje: {{mensaje}}</p>
-    {% else %}
-        <strong>La variable mensaje NO EXISTE</strong>
+    <H1 class="title"> 
+        Formulario en DJango
+    </H1>
+    {% if form.errors %}
+        <strong class="rojo">
+            Hay errores en el Formulario
+            {{form.errors}}
+        </strong>
     {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Agregar" />
 
-    <p>Año: 2021</p>
-{% endblock content %}
+    </form>
+{% endblock %}

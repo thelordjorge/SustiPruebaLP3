@@ -59,4 +59,47 @@ class FormRegion(forms.Form):
     })
 
 
+class FormEmpleado(forms.Form):
+    fullname = forms.CharField(
+        label="Empleado",
+        max_length=40,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Ingrese el nombre',
+                'class': 'titulo_form_articulo'
+            }
+        ),
+        validators=[
+            validators.MinLengthValidator(4,'El título es corto'),
+            validators.RegexValidator('^[A-Za-z0-9ñÑ ]*$','El título tiene caracteres inválidos','titulo_invalido')
+        ]
+    )
+
+    job = forms.CharField(
+        label="Trabajo",
+        widget=forms.TextInput,
+        validators=[
+            validators.MaxLengthValidator(150,'Superaste el límite de caracteres')
+        ]        
+    )
+    
+    opciones_state = [
+        (1,'Si'),
+        (0,'No'),
+    ]
+    state = forms.TypedChoiceField(
+        label="¿Activo?",
+        choices=opciones_state
+    )
+   
+    job.widget.attrs.update({
+        'placeholder': 'Ingrese nombre de trabajo',
+        'class': 'job_form_empleado',
+        'id':'job_form'
+    })
+
+    
+
+
     
